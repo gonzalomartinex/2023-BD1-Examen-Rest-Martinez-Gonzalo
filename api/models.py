@@ -95,7 +95,7 @@ class Employees(models.Model):
 class Orderdetails(models.Model):
     orderid = models.OneToOneField('Orders', models.DO_NOTHING, db_column='OrderID', primary_key=True)  # Field name made lowercase. The composite primary key (OrderID, ProductID) found, that is not supported. The first column is selected.
     productid = models.ForeignKey('Products', models.DO_NOTHING, db_column='ProductID')  # Field name made lowercase.
-    unitprice = models.DecimalField(db_column='UnitPrice', max_digits=10, decimal_places=4)  # Field name made lowercase.
+    unitprice = models.DecimalField(db_column='UnitPrice'   , max_digits=10, decimal_places=4)  # Field name made lowercase.
     quantity = models.SmallIntegerField(db_column='Quantity')  # Field name made lowercase.
     discount = models.FloatField(db_column='Discount')  # Field name made lowercase.
 
@@ -136,7 +136,6 @@ class Products(models.Model):
     unitsinstock = models.SmallIntegerField(db_column='UnitsInStock', blank=True, null=True)  # Field name made lowercase.
     unitsonorder = models.SmallIntegerField(db_column='UnitsOnOrder', blank=True, null=True)  # Field name made lowercase.
     reorderlevel = models.SmallIntegerField(db_column='ReorderLevel', blank=True, null=True)  # Field name made lowercase.
-    discontinued = models.TextField(db_column='Discontinued')  # Field name made lowercase. This field type is a guess.
 
     class Meta:
         managed = False
